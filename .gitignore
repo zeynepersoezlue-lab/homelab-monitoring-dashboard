@@ -1,0 +1,12 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Mac
+.DS_Store
+
+# Java
+target/
+
+# Environment
+.env
