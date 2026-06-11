@@ -12,4 +12,20 @@ public class Device {
         this.ipAddress = ipAddress;
         this.deviceType = deviceType;
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getIpAddress(){
+        return ipAddress;
+    }
+
+    public DeviceType getDeviceType(){
+        return deviceType;
+    }
+
+    public DeviceStatus getStatus(){
+        return status;
+    }
 }
