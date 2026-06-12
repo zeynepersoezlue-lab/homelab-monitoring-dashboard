@@ -2,6 +2,8 @@ package de.zeynep.homelab.controller;
 import de.zeynep.homelab.model.Device;
 import de.zeynep.homelab.model.DeviceType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -31,6 +33,12 @@ public class DeviceController {
     @GetMapping("/devices")
     public ArrayList<Device> getDevices(){
         return devices;
+    }
+
+    @PostMapping("/devices")
+    public Device postDevices(@RequestBody Device device){
+        devices.add(device);
+        return device;
     }
 
 }
