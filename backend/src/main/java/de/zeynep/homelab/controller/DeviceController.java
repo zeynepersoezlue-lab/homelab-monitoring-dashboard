@@ -1,10 +1,7 @@
 package de.zeynep.homelab.controller;
 import de.zeynep.homelab.model.Device;
 import de.zeynep.homelab.model.DeviceType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -41,4 +38,17 @@ public class DeviceController {
         return device;
     }
 
+    @GetMapping("/devices/count")
+    public int getDevicesCount(){
+        return devices.size();
+    }
+
+    @GetMapping("/devices/{index}")
+    public Device getDevicesIndex(@PathVariable int index){
+        return devices.get(index);
+    }
+    @DeleteMapping("/devices/{index}")
+    public Device deleteDevice(@PathVariable int index){
+        return devices.remove(index);
+    }
 }
