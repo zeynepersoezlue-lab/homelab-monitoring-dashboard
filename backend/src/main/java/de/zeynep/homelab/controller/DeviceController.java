@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 @RestController
 public class DeviceController {
+    private int nextId = 1;
+
     ArrayList<Device> devices = new ArrayList<>();
     Device macbook = new Device("MacBook Air", "192.168.178.10", DeviceType.LAPTOP);
     Device lenovo = new Device("Lenovo","192.168.178.11", DeviceType.LAPTOP);
@@ -20,13 +22,29 @@ public class DeviceController {
     Device alexa = new Device("Alexa", "192.168.178.40", DeviceType.OTHER);
 
     public DeviceController(){
+
+        macbook.setId(nextId++);
         devices.add(macbook);
+
+        lenovo.setId(nextId++);
         devices.add(lenovo);
+
+        fritzbox.setId(nextId++);
         devices.add(fritzbox);
+
+        hpDrucker.setId(nextId++);
         devices.add(hpDrucker);
+
+        ipad.setId(nextId++);
         devices.add(ipad);
+
+        iphone11.setId(nextId++);
         devices.add(iphone11);
+
+        iphone17.setId(nextId++);
         devices.add(iphone17);
+
+        alexa.setId(nextId++);
         devices.add(alexa);
     }
     @GetMapping("/devices")
@@ -66,4 +84,22 @@ public class DeviceController {
         devices.set(index, device);
         return device;
     }
+
+   /* @GetMapping("/devices/{id}")
+    public Device getDeviceById(@PathVariable int id){
+
+        for(int i = 0; i < devices.size(); i++){
+
+            Device device = devices.get(i);
+
+            if(device.getId() == id){
+                return device;
+            }
+        }
+
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Device not found"
+        );
+    }*/
 }

@@ -6,6 +6,7 @@ public class Device {
     private String ipAddress;
     private DeviceType deviceType;
     private DeviceStatus status = DeviceStatus.UNKNOWN;
+    private int id;
 
     public Device(String name, String ipAddress, DeviceType deviceType){
         this.name = name;
@@ -27,5 +28,11 @@ public class Device {
 
     public DeviceStatus getStatus(){
         return status;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
     }
 }
