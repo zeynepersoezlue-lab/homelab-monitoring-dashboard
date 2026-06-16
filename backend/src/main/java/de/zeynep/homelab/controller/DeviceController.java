@@ -2,6 +2,8 @@ package de.zeynep.homelab.controller;
 import de.zeynep.homelab.model.Device;
 import de.zeynep.homelab.model.DeviceType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 
@@ -38,15 +40,22 @@ public class DeviceController {
         return device;
     }
 
-    @GetMapping("/devices/count")
+    @GetMapping("/devices/stats/count")
     public int getDevicesCount(){
         return devices.size();
     }
 
     @GetMapping("/devices/{index}")
     public Device getDevicesIndex(@PathVariable int index){
+        if(index < 0 || index >= devices.size()){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Device not found"
+            );
+        }
         return devices.get(index);
     }
+
     @DeleteMapping("/devices/{index}")
     public Device deleteDevice(@PathVariable int index){
         return devices.remove(index);
