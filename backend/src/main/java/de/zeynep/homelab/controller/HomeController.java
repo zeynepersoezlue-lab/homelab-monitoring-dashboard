@@ -11,4 +11,5 @@ public class HomeController{
         String ausgabe = "Home Lab Monitoring Dashboard läuft";
         return ausgabe;
     }
+
 }

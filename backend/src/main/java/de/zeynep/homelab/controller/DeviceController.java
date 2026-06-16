@@ -51,4 +51,10 @@ public class DeviceController {
     public Device deleteDevice(@PathVariable int index){
         return devices.remove(index);
     }
+
+    @PutMapping("/devices/{index}")
+    public Device putDevices(@PathVariable int index, @RequestBody Device device){
+        devices.set(index, device);
+        return device;
+    }
 }
